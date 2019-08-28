@@ -1,0 +1,16 @@
+POM - Project Object Model
+    XML que contém informações sobre o projeto e detalhes de configurações 
+    Também contem goals e plugins.
+
+Build Lifecycle
+    Sequência de phases que definem a ordem em que goals serão executados, geralmente:
+    prepare-resources -> validate -> compile -> Test -> package -> install -> Deploy
+Goal
+    Um goal representa uma tarefa específica. Pode ser relacionada a zero ou mais phases.
+    Um goal não associado a uma phase pode ser chamado de fora do build lifecycle
+
+Links
+https://maven.apache.org/plugins/maven-resources-plugin/examples/include-exclude.html
+https://gist.github.com/erkobridee/3287943
+https://dzone.com/articles/maven-git-commit-id-plugin
+https://github.com/git-commit-id/maven-git-commit-id-plugin/blob/master/docs/using-the-plugin.md
