@@ -28,7 +28,17 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources/</directory>
+        <includes>
+          <include>test.txt</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
     <plugins>
+      <!-- echo on maven output -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -42,32 +52,32 @@
             </goals>
             <configuration>
                 <tasks>
-                    <echo>Hello</echo>
+                    <echo>Branch: ${git.commit.id}</echo>
                 </tasks>
             </configuration>
           </execution>
         </executions>
       </plugin>
+      <!-- configuration for git plugin -->
+      <plugin>
+          <groupId>pl.project13.maven</groupId>
+          <artifactId>git-commit-id-plugin</artifactId>
+          <version>2.2.4</version>
+          <executions>
+              <execution>
+                  <id>get-the-git-infos</id>
+                  <goals>
+                      <goal>revision</goal>
+                  </goals>
+              </execution>
+          </executions>
+          <configuration>
+              <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+              <dateFormat>dd-MM-yyyy - HH:mm:ss</dateFormat>
+              <prefix>git</prefix>
+              <verbose>false</verbose>
+          </configuration>
+      </plugin>
     </plugins>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
   </build>
 </project>

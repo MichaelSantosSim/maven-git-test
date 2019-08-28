@@ -1,0 +1,4 @@
+Commit: ${git.commit.id}
+Builded By: ${git.build.user.name} (Note that it is not the same who has commited)
+Builded at: ${git.build.time}
+Commit Message: ${git.commit.message.full}
